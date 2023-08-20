@@ -110,12 +110,3 @@ describe("When Events is created", () => {
   });
 });
 
-/* Le test échoué se trouve dans le fichier index.test.js, à la ligne 94.
-
-L'erreur indique que vous avez utilisé l'assertion expect(element).not.toBeInTheDocument(). Cela signifie que vous vous attendez à ce qu'un élément spécifique ne soit pas présent dans le DOM.
-
-Cependant, le test a trouvé un élément qui ne devrait pas 
-être présent. Plus précisément, il a trouvé un élément <div class="EventCard__title">Forum #productCON</div>.
-
-L'erreur suggère que cet élément aurait dû ne pas être présent, 
-mais il a été trouvé dans le document, ce qui a provoqué l'échec du test. */
