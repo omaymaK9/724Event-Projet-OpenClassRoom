@@ -1,4 +1,4 @@
-import Menu from "../../containers/Menu";
+ import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
@@ -13,8 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { data } = useData();
-  const last = data?.events.slice().sort(((evtA, evtB) => evtA.date < evtB.date))[0];
+  const { last } = useData()
   return <>
     <header>
       <Menu />
@@ -23,8 +22,8 @@ const Page = () => {
       <section className="SliderContainer">
         <Slider />
       </section>
-      <section id="nos-services" className="ServicesContainer">
-        <h2 className="Title">Nos services</h2>
+      <section className="ServicesContainer">
+        <h2 className="Title" id="nos-services">Nos services</h2>
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
           <ServiceCard imageSrc="/images/priscilla-du-preez-Q7wGvnbuwj0-unsplash1.png">
@@ -52,12 +51,12 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
-      <section id="nos-realisations" className="EventsContainer">
-        <h2 className="Title">Nos réalisations</h2>
+      <section className="EventsContainer">
+        <h2 className="Title" id="nos-realisations">Nos réalisations</h2>
         <EventList />
       </section>
-      <section id="notre-equipe" className="PeoplesContainer">
-        <h2 className="Title">Notre équipe</h2>
+      <section className="PeoplesContainer">
+        <h2 className="Title" id="notre-equipe">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
         <div className="ListContainer">
           <PeopleCard
@@ -114,17 +113,18 @@ const Page = () => {
         </Modal>
       </div>
     </main>
-    <footer className="row" data-testid="page-footer">
+    <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {!last ? <div/> :
-      <EventCard
-        imageSrc={last?.cover}
-        title={last?.title}
-        date={new Date(last?.date)}
-        small
-        label="boom"
-      />}
+        {last && ( 
+          <EventCard
+            imageSrc={last.cover}
+            title={last.title}
+            date={new Date(last.date)}
+            small
+            label="boom"
+          />
+        )}
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
